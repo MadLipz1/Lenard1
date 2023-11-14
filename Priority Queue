@@ -1,0 +1,61 @@
+import java.util.LinkedList;
+
+public class MyQueue<E> {
+    private final LinkedList<E> list = new LinkedList<>();
+
+    // Enqueue an element to the end of the queue
+    public void enqueue(E element) {
+        list.addLast(element);
+    }
+
+    // Dequeue an element from the front of the queue
+    public E dequeue() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        return list.removeFirst();
+    }
+
+    // Peek at the front element of the queue without removing it
+    public E peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        return list.getFirst();
+    }
+
+    // Check if the queue is empty
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    // Get the size of the queue
+    public int size() {
+        return list.size();
+    }
+
+    // Clear all elements from the queue
+    public void clear() {
+        list.clear();
+    }
+
+    // Display the elements of the queue
+    public void display() {
+        System.out.println("Queue: " + list);
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        MyQueue<String> stringQueue = new MyQueue<>();
+        stringQueue.enqueue("One");
+        stringQueue.enqueue("Two");
+        stringQueue.enqueue("Three");
+
+        stringQueue.display(); // Output: Queue: [One, Two, Three]
+
+        System.out.println("Dequeue: " + stringQueue.dequeue()); // Output: Dequeue: One
+        System.out.println("Peek: " + stringQueue.peek());       // Output: Peek: Two
+
+        stringQueue.display(); // Output: Queue: [Two, Three]
+    }
+}
